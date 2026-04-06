@@ -74,6 +74,18 @@ Fill (%) = ((Bin Height - Distance) / Bin Height) × 100
 5. **Decision Making:** If the fill level exceeds 80%, the system flags the bin for collection using the Random Forest model.
 
 ---
+## Dataset
+
+The models used in this project were trained and evaluated using publicly available datasets:
+
+1. Garbage Detection Dataset
+   https://www.kaggle.com/datasets/viswaprakash1990/garbage-detection
+
+2. Waste Management Dataset
+   https://www.kaggle.com/datasets/sarasasaikrishna/dataset-for-waste-management-system
+
+These datasets contain labeled images of various waste categories such as cardboard, glass, metal, paper, plastic, and trash. The data was preprocessed and resized before being used for training the CNN model.
+
 
 ## References
 

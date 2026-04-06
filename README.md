@@ -1,107 +1,94 @@
-# Smart-Waste-Management-System
-A hybrid IoT and Deep Learning solution designed to optimize waste collection and improve recycling accuracy. This project combines real-time bin monitoring with automated image-based classification.
+# Smart Waste Management System
 
-🌟 Overview
+A hybrid IoT and Deep Learning solution designed to optimize waste collection and improve recycling accuracy. This project integrates real-time bin monitoring with automated image-based waste classification.
 
-Traditional waste management often suffers from inefficient collection routes and poor sorting. Our system addresses this with a two-pronged approach:
+---
 
-IoT Monitoring: Real-time fill-level detection using Arduino.
+## Overview
 
-AI Sorting: A custom CNN model that identifies waste categories (Plastic, Glass, Paper, etc.).
+Traditional waste management systems often suffer from inefficient collection scheduling and poor waste segregation. This project addresses these challenges through a dual-approach system:
 
-🚀 Key Features
+* **IoT Monitoring:** Real-time fill-level detection using an Arduino-based sensor system.
+* **AI-Based Sorting:** A custom Convolutional Neural Network (CNN) model for classifying waste into categories such as plastic, glass, paper, metal, and others.
 
-Predictive Analytics: Uses a Random Forest model to predict if a bin needs emptying with 89% accuracy.
+---
 
-Custom AI Vision: A custom-built CNN reaching 70% accuracy for waste type identification.
+## Key Features
 
-Real-Time Alerts: Automated distance sensing with a 5-second telemetry loop.
+* **Predictive Analytics:** A Random Forest model predicts whether a bin requires emptying with an accuracy of 89%.
+* **AI-Based Vision System:** A custom CNN model achieves 70% accuracy in classifying waste types.
+* **Real-Time Monitoring:** Ultrasonic sensing with a 5-second telemetry loop for continuous data updates.
+* **Integrated Hardware System:** Combines ultrasonic and infrared sensors for fill-level measurement and object detection.
 
-Smart Hardware: Integrated Ultrasonic and IR sensors for object detection and capacity tracking.
+---
 
-🛠️ Hardware Setup
+## Hardware Setup
 
-Microcontroller: Arduino Board
+* **Microcontroller:** Arduino Board
+* **Distance Measurement:** Ultrasonic Sensor
 
-Distance Sensing: Ultrasonic Sensor (Trig: Pin 9, Echo: Pin 10)
+  * Trigger Pin: 9
+  * Echo Pin: 10
+* **Object Detection:** Infrared (IR) Sensor
 
-Object Detection: Infrared (IR) Sensor (Pin 7)
+  * Output Pin: 7
 
-Fill Level Logic
+---
 
-The system averages 5 readings for stability. The capacity is calculated as:
-Fill % = ((Bin Height - Distance) / Bin Height) * 100
+## Fill Level Calculation
 
-📊 Performance Metrics
+To ensure stable readings, the system averages multiple sensor measurements. The fill level is calculated as:
 
-Bin Status Prediction (Random Forest)
+Fill (%) = ((Bin Height - Distance) / Bin Height) × 100
 
-Metric
+---
 
-Value
+## Performance Metrics
 
-Accuracy
+### Bin Status Prediction (Random Forest)
 
-89%
+| Metric   | Value |
+| -------- | ----- |
+| Accuracy | 89%   |
+| ROC-AUC  | 0.96  |
 
-ROC-AUC
+### Image Classification (Custom CNN)
 
-0.96
+| Class     | F1-Score |
+| --------- | -------- |
+| Cardboard | 0.81     |
+| Paper     | 0.75     |
+| Plastic   | 0.72     |
+| Glass     | 0.67     |
+| Metal     | 0.61     |
+| Trash     | 0.44     |
 
-Image Classification (Custom CNN)
+---
 
-Class
+## System Workflow
 
-F1-Score
+1. **Detection:** The IR sensor detects the presence of a user or object near the bin.
+2. **Image Capture:** A camera captures an image of the waste item.
+3. **Classification:** The CNN model classifies the waste type.
+4. **Monitoring:** The ultrasonic sensor measures the bin fill level.
+5. **Decision Making:** If the fill level exceeds 80%, the system flags the bin for collection using the Random Forest model.
 
-Cardboard
+---
 
-0.81
+## References
 
-Paper
+1. Yang, M., & Thung, G. (2016). *Classification of Trash for Recyclability Status*. Stanford University.
+2. Anagnostopoulos, T., et al. (2017). *Challenges and Opportunities of Waste Management in IoT-Enabled Smart Cities*.
+3. Breiman, L. (2001). *Random Forests*. Machine Learning Journal.
 
-0.75
+---
 
-Plastic
+## Contributing
 
-0.72
+Contributions are welcome. Suggestions for improving model accuracy, hardware efficiency, or system integration can be submitted via pull requests.
 
-Glass
+---
 
-0.67
+## License
 
-Metal
-
-0.61
-
-Trash
-
-0.44
-
-💻 How It Works
-
-Detection: IR sensor identifies a user/object approaching the bin.
-
-Vision: A camera captures an image of the waste item.
-
-Classification: The Custom CNN classifies the material for sorting guidance.
-
-Monitoring: Ultrasonic sensors update the fill level.
-
-Logistics: If the fill level > 80%, the system flags the bin for collection using the Random Forest model.
-
-📚 References
-
-TrashNet: Yang, M., & Thung, G. (2016). Classification of Trash for Recyclability Status.
-
-IoT Research: Anagnostopoulos, T., et al. (2017). Challenges and Opportunities of Waste Management in IoT-Enabled Smart Cities.
-
-RF Methodology: Breiman, L. (2001). Random Forests.
-
-🤝 Contributing
-
-Contributions are welcome! If you have suggestions for improving the AI accuracy or hardware efficiency, please fork the repo and submit a pull request.
-
-📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License. Refer to the LICENSE file for details.
